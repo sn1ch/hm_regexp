@@ -18,8 +18,9 @@ for contact in contacts_list:
     FIO = tuple(FIO)
     correct_FIO_contacts_list.append(list(FIO) + contact[3:])
 
-correct_FIO_contacts_list[8].append(correct_FIO_contacts_list[8][5])
-correct_FIO_contacts_list[8][5] = ""
+for contact in correct_FIO_contacts_list:
+    if len(contact) != 7:
+        contact.insert(2, "")
 
 uniting_dict = {}
 for contact in correct_FIO_contacts_list:
@@ -41,7 +42,6 @@ for lastname in uniting_dict.keys():
     if count != len(last_contacts_list):
         last_contacts_list[count].insert(0, lastname)
     count += 1
-pprint(last_contacts_list)
 
 pattern_phone = \
     '((8|\+7)[\- ]?)?(\()?(\d{3})?(\))?[\- ]?(\d{3})?[\- ]?(\d{2})?[\- ]?(\d{2})(\s*)(\()?(доб.)*(\s)?(\d{4})?(\))?'
